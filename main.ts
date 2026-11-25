@@ -7,8 +7,9 @@
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join, resolve } from "node:path";
 
-const LINE =
-  "In my defense, the map said shortcut \u2014 it never said the shortcut went through a lake, a wedding, and every life choice that led you to trust me.";
+function buildEntryLine(): string {
+  return "In my defense, the map said shortcut \u2014 it never said the shortcut went through a lake, a wedding, and every life choice that led you to trust me.";
+}
 
 const MAX_CHARS = 200;
 
@@ -21,6 +22,7 @@ function resolveOutputPath(): string {
 }
 
 function main(): void {
+  const LINE = buildEntryLine();
   const outPath = resolveOutputPath();
   mkdirSync(join(outPath, ".."), { recursive: true });
   writeFileSync(outPath, LINE, "utf8");
